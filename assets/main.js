@@ -759,3 +759,14 @@
 
 /* === licznik otwarć demo (buy-signal) v3 — geo po stronie serwera === */
 (function(){try{if(String(location.protocol).indexOf('http')!==0)return;try{if(/[?&#]team=1/.test(location.search+location.hash)){localStorage.setItem('nb_team','1');}}catch(e){}try{if(localStorage.getItem('nb_team')==='1')return;}catch(e){}if(/crm-newbeginning|crm\.impulseo\.pl/.test(document.referrer||''))return;try{if(navigator.webdriver)return;}catch(e){}try{if(/^https?:\/\/(kris20032|impulseo-pl)\.github\.io\/?$/i.test(document.referrer||''))return;}catch(e){}if(sessionStorage.getItem('_dv'))return;sessionStorage.setItem('_dv','1');var seg=(location.pathname.split('/').filter(Boolean)[0])||'';var base=location.origin+(seg?('/'+seg):'');var ua='';try{ua=(navigator.userAgent||'').slice(0,300);}catch(e){}var EP='https://zngfubfinbojfgaxdrbf.supabase.co/functions/v1/demo-view';try{fetch(EP,{method:'POST',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify({demo_url:base,page:location.pathname,referrer:(document.referrer||null),user_agent:(ua||null)})}).catch(function(){});}catch(e){}}catch(e){}})();
+
+/* Stopklatka: nieruchome tło (position:fixed pod clip-path) pokazujemy tylko w pobliżu sekcji */
+(function () {
+  var st = document.querySelectorAll('.stopklatka');
+  if (!st.length || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('stk-js');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { e.target.classList.toggle('stk-on', e.isIntersecting); });
+  }, { rootMargin: '300px 0px' });
+  st.forEach(function (el) { io.observe(el); });
+})();

@@ -139,12 +139,12 @@ section{padding:var(--sec) 0;position:relative}
 .hero-sw > .hs-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;z-index:-3}
 .hero-sw::before{content:"";position:absolute;inset:0;z-index:-2;background:#1aa2a7;mix-blend-mode:multiply;opacity:.62}
 .hero-sw::after{content:"";position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(180deg,rgba(9,58,62,.88) 0%,rgba(9,58,62,.40) 30%,rgba(9,58,62,0) 52%),
+  linear-gradient(180deg,rgba(7,48,52,.92) 0%,rgba(8,52,56,.62) 24%,rgba(9,58,62,.18) 40%,rgba(9,58,62,0) 54%),
   linear-gradient(90deg,rgba(8,46,50,.90) 0%,rgba(12,86,90,.62) 40%,rgba(26,162,167,.10) 78%,rgba(26,162,167,0) 100%)}
 .wordmark,.hero-nav,.hs-body{width:100%;max-width:var(--wrap);margin-left:auto;margin-right:auto}
 .wordmark{display:block;padding:clamp(10px,1.6vw,22px) var(--gut) 0;line-height:0}
 .wordmark svg{width:100%;height:auto;display:block;overflow:visible}
-.wordmark text{font-family:var(--f-display);font-style:italic;font-weight:800;fill:var(--cream);letter-spacing:0}
+.wordmark text{font-family:var(--f-display);font-style:italic;font-weight:800;fill:var(--cream);letter-spacing:0;text-shadow:0 2px 28px rgba(0,26,29,.55)}
 .hero-nav{display:flex;align-items:center;gap:var(--space-6);padding:clamp(10px,1.6vw,22px) var(--gut) 0}
 .hero-nav .hn-links{display:flex;gap:clamp(22px,3vw,48px);margin-right:auto}
 .hero-nav .hn-links a{font-size:.9rem;font-weight:500;color:#fff;position:relative;padding:6px 0}
@@ -422,7 +422,7 @@ footer{background:var(--ink-deep);color:rgba(255,255,255,.62);padding:clamp(64px
 .svc-row h2{font-size:clamp(1.8rem,1.4rem + 1.6vw,2.8rem);margin-top:12px}
 .svc-row p{margin-top:18px;color:var(--slate);max-width:48ch}
 .svc-row ul{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line)}
-.svc-row li{padding:15px 4px;border-bottom:1px solid var(--line);font-size:.92rem;color:var(--ink);display:flex;gap:12px}
+.svc-row li{padding:16px 4px;border-bottom:1px solid var(--line);font-size:.92rem;color:var(--ink);display:flex;gap:12px}
 .svc-row li::before{content:"/";font-family:var(--f-mono);color:var(--accent-t)}
 .svc-row .link-line{margin-top:28px}
 
@@ -1082,3 +1082,8 @@ footer{view-transition-name:mt-foot}
 /* hover kafli bez opóźnienia z animacji wejścia (bramka: reakcja na kursor) */
 .reveal.mt-settled{transition-delay:0s!important}
 .tile:hover,.tile:hover img,.sv-card:hover,.sv-card:hover img{transition-delay:0s!important}
+
+/* tło stopklatki rysujemy dopiero, gdy sekcja jest blisko ekranu (main.js dodaje .stk-on);
+   bez JS (brak .stk-js) tło jest widoczne zawsze */
+.stk-js .stopklatka .stk-bg{visibility:hidden}
+.stk-js .stopklatka.stk-on .stk-bg{visibility:visible}
